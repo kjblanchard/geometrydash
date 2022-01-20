@@ -1,0 +1,152 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "geometrydash/main"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"geometrydash/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 2,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 4,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 3,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "/Library/Frameworks/SDL2.framework/Headers"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/kevin.blanchard/git/personal/c/geometry_dash/sgengine/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Library/Frameworks"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Library/Frameworks/FMOD Programmers API/api/studio/inc"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Library/Frameworks/FMOD Programmers API/api/core/inc"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "sgengine::@2e72d22153adfc6be792"
+		}
+	],
+	"id" : "main::@93ee4f55354b2a4b5ac3",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/Users/kevin.blanchard/git/personal/c/geometry_dash/build/sgengine -Wl,-rpath,/Users/kevin.blanchard/git/personal/c/geometry_dash/sgengine/libs",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "sgengine/libsgengine.dylib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "../sgengine/libs/libfmod.dylib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "../sgengine/libs/libfmodstudio.dylib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "main",
+	"nameOnDisk" : "main",
+	"paths" : 
+	{
+		"build" : "geometrydash",
+		"source" : "geometrydash"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "geometrydash/main.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

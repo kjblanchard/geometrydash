@@ -1,0 +1,101 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22.1"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "sgengine",
+					"jsonFile" : "directory-sgengine-Debug-5c93ced058d53330d0a2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22.1"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "sgengine",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "geometrydash",
+					"jsonFile" : "directory-geometrydash-Debug-86149e30cc4f57cc697c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22.1"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "geometrydash",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "GeometryDash",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "main::@93ee4f55354b2a4b5ac3",
+					"jsonFile" : "target-main-Debug-ff7a75311c0ab8957c72.json",
+					"name" : "main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "sgengine::@2e72d22153adfc6be792",
+					"jsonFile" : "target-sgengine-Debug-ebb8a320c86ef80b4819.json",
+					"name" : "sgengine",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/kevin.blanchard/git/personal/c/geometry_dash/build",
+		"source" : "/Users/kevin.blanchard/git/personal/c/geometry_dash"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

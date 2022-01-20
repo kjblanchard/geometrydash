@@ -1,0 +1,9 @@
+# ninja log v5
+0	599	1642720283164935459	sgengine/CMakeFiles/sgengine.dir/initialize_audio.cpp.o	79bd616ccbf91929
+1	796	1642720283360326661	geometrydash/CMakeFiles/main.dir/main.cpp.o	abf748f5b405744c
+797	874	1642720283442599895	geometrydash/main	5b0e64b03ac99917
+601	671	1642720283239286919	sgengine/libsgengine.dylib	5aaac733ffa715c1
+2	708	1642720523826368821	sgengine/CMakeFiles/sgengine.dir/initialize_audio.cpp.o	79bd616ccbf91929
+709	784	1642720523904106686	sgengine/libsgengine.dylib	5aaac733ffa715c1
+3	915	1642720524031580948	geometrydash/CMakeFiles/main.dir/main.cpp.o	abf748f5b405744c
+915	995	1642720524115262981	geometrydash/main	5b0e64b03ac99917

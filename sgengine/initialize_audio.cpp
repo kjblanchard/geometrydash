@@ -1,5 +1,8 @@
 #include "fmod_studio.hpp"
 #include "fmod.hpp"
+#include <core/World.hpp>
+#include <core/Point.hpp>
+
 #include <iostream>
 
 FMOD::Studio::System* destroy()

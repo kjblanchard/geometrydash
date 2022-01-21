@@ -2,6 +2,8 @@ message(STATUS HELLOS)
 add_library(
     sgengine SHARED
     initialize_audio.cpp
+    core/Point.hpp
+    core/World.hpp
 )
 # Add tripartite so Libraries
 add_library(libfmod
@@ -32,9 +34,11 @@ add_library(sdl
                         /Users/kevin.blanchard/git/personal/c/geometry_dash/sgengine/libs/SDL2.dylib
                         )
 
-target_include_directories(sgengine PUBLIC "/Library/Frameworks/SDL2.framework/Headers" 
+
+target_include_directories(sgengine PUBLIC 
+"/Library/Frameworks/SDL2.framework/Headers" 
 "./" 
-"/Library/Frameworks/"
+"./core"
 "/Library/Frameworks/FMOD Programmers API/api/studio/inc/"
 "/Library/Frameworks/FMOD Programmers API/api/core/inc/")
 set_property(TARGET sgengine PROPERTY CXX_STANDARD 20)

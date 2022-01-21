@@ -22,6 +22,15 @@ add_library(libfmodstudio
                         PROPERTIES IMPORTED_LOCATION
                         /Users/kevin.blanchard/git/personal/c/geometry_dash/sgengine/libs/libfmodstudio.dylib
                         )
+add_library(sdl
+            SHARED
+            IMPORTED )
+
+ # The Absolute Path of Naming Third Party Library
+ set_target_properties( sdl
+                        PROPERTIES IMPORTED_LOCATION
+                        /Users/kevin.blanchard/git/personal/c/geometry_dash/sgengine/libs/SDL2
+                        )
 
 target_include_directories(sgengine PUBLIC "/Library/Frameworks/SDL2.framework/Headers" 
 "./" 
@@ -33,6 +42,7 @@ target_link_libraries(sgengine
 PUBLIC
 libfmod
 libfmodstudio
+sdl
 )
 # target_link_libraries(sgengine PUBLIC 
 # "/Library/Frameworks/FMOD Programmers API/api/studio/lib/libfmodstudio.dylib")

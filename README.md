@@ -1,1 +1,0 @@
-Mostly a learning project for cmake and c++ in vscode.

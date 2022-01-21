@@ -29,7 +29,7 @@ add_library(sdl
  # The Absolute Path of Naming Third Party Library
  set_target_properties( sdl
                         PROPERTIES IMPORTED_LOCATION
-                        /Users/kevin.blanchard/git/personal/c/geometry_dash/sgengine/libs/SDL2
+                        /Users/kevin.blanchard/git/personal/c/geometry_dash/sgengine/libs/SDL2.dylib
                         )
 
 target_include_directories(sgengine PUBLIC "/Library/Frameworks/SDL2.framework/Headers" 
@@ -44,6 +44,18 @@ libfmod
 libfmodstudio
 sdl
 )
-# target_link_libraries(sgengine PUBLIC 
-# "/Library/Frameworks/FMOD Programmers API/api/studio/lib/libfmodstudio.dylib")
-# target_include_directories(sgengine PUBLIC "./")
+add_custom_command(
+        TARGET sgengine POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+                ${CMAKE_SOURCE_DIR}/sgengine/libs/libfmod.dylib
+                ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}/libs/libfmod.dylib)
+add_custom_command(
+        TARGET sgengine POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+                ${CMAKE_SOURCE_DIR}/sgengine/libs/libfmodstudio.dylib
+                ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}/libs/libfmodstudio.dylib)
+add_custom_command(
+        TARGET sgengine POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+                ${CMAKE_SOURCE_DIR}/sgengine/libs/SDL2.dylib
+                ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}/libs/SDL2.dylib)

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <sgengine/core/initialize_audio.h>
-#include "SDL.h"
+#include <SDL.h>
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;

@@ -37,6 +37,8 @@ namespace SG
 			return false;
 		if (!_graphics->Startup())
 			return false;
+		if (!InitializeFmod())
+			return false;
 		// _input->Startup();
 		return true;
 	}
@@ -69,12 +71,13 @@ namespace SG
 					DebugHandler::PrintErrorMessage(ErrorCodes::GameSlowdown, _gameClock->DeltaTime());
 				while (_gameClock->ShouldUpdate())
 				{
-					// HandleInput();
 					Update(_gameClock->MsPerFrame());
 					_gameClock->UpdateClockTimer();
+					_sound->update();
 				}
 				Draw();
 			}
+			SDL_Delay(1);
 		}
 	}
 

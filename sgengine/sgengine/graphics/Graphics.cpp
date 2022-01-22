@@ -93,7 +93,8 @@ namespace SG
 
 	bool Graphics::CreateRenderer()
 	{
-		_renderer = SDL_CreateRenderer(_gameWindow, -1, SDL_RENDERER_ACCELERATED);
+		// _renderer = SDL_CreateRenderer(_gameWindow, -1, SDL_RENDERER_ACCELERATED);
+		_renderer = SDL_GetRenderer(_gameWindow);
 		if (!_renderer)
 		{
 			DebugHandler::PrintErrorMessage(ErrorCodes::SDLError);

@@ -4,6 +4,7 @@ add_library(
     initialize_audio.cpp
     core/Point.hpp
     core/World.hpp
+    core/World.cpp
 )
 # Add tripartite so Libraries
 add_library(libfmod
@@ -35,12 +36,13 @@ add_library(sdl
                         )
 
 
-target_include_directories(sgengine PUBLIC 
+target_include_directories(sgengine 
+PUBLIC 
 "/Library/Frameworks/SDL2.framework/Headers" 
-"./" 
-"./core"
 "/Library/Frameworks/FMOD Programmers API/api/studio/inc/"
-"/Library/Frameworks/FMOD Programmers API/api/core/inc/")
+"/Library/Frameworks/FMOD Programmers API/api/core/inc/"
+"sgengine/"
+)
 set_property(TARGET sgengine PROPERTY CXX_STANDARD 20)
 target_link_libraries(sgengine
 PUBLIC

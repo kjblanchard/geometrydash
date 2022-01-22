@@ -9,6 +9,7 @@ bool init();
 
 int main()
 {
+    std::cout << "Hello, just starting";
 	if (SDL_INIT_AUDIO)
 		std::cout << "Initialized audio!    ";
 	else

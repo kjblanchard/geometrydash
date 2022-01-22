@@ -6,7 +6,7 @@ file(GLOB FILES "sgengine/**/*.?pp")
 add_library(sgengine SHARED ${FILES})
 
 #Define library names / references to their link files that we depend on, shared is dynamic linking.  Imported needs a specific location.
-set(libnames libfmod libfmodstudio SDL2)
+set(libnames libfmod libfmodstudio SDL2 SDL2_image)
 foreach(library ${libnames})
         add_library(${library} SHARED IMPORTED)
 endforeach()
@@ -58,6 +58,11 @@ add_custom_command(
         COMMAND ${CMAKE_COMMAND} -E copy
                 /usr/local/lib/SDL2.dylib
                 ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}/lib/SDL2.dylib)
+add_custom_command(
+        TARGET sgengine POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+                /usr/local/lib/SDL2_image.dylib
+                ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}/lib/SDL2_image.dylib)
 add_custom_command(
         TARGET sgengine POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy

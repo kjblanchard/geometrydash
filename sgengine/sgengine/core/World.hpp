@@ -8,7 +8,7 @@
 #pragma once
 #include <memory>
 #include <SDL_video.h>
-#include <core/World.hpp>
+#include <sgengine/core/Point.hpp>
 
 
 namespace SG

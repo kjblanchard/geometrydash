@@ -1,6 +1,6 @@
 #include <iostream>
+#include <sgengine/core/initialize_audio.h>
 #include "SDL.h"
-#include "initialize_audio.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -32,7 +32,7 @@ int main()
 		frameTimeMS = timeMS - oldTimeMS;
 		frameTime = ((float)timeMS / 1000.0f) * FPS;
 		SDL_Delay(10);
-		if (frameTime > 1000)
+		if (frameTime > 100)
 		{
 			num++;
 			if (num > FPS)

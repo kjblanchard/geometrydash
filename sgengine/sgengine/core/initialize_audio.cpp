@@ -1,7 +1,7 @@
 #include "fmod_studio.hpp"
 #include "fmod.hpp"
-#include <core/World.hpp>
-#include <core/Point.hpp>
+#include <sgengine/core/World.hpp>
+#include <sgengine/core/Point.hpp>
 
 #include <iostream>
 

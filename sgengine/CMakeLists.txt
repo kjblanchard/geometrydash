@@ -1,55 +1,44 @@
-message(STATUS HELLOS)
-add_library(
-    sgengine SHARED
-    initialize_audio.cpp
-    core/Point.hpp
-    core/World.hpp
-    core/World.cpp
-)
-# Add tripartite so Libraries
-add_library(libfmod
-            SHARED
-            IMPORTED )
+#Random status message
+message(STATUS "Starting Engine Cmake..")
 
- # The Absolute Path of Naming Third Party Library
- set_target_properties( libfmod
-                        PROPERTIES IMPORTED_LOCATION
-                        /Users/kevin.blanchard/git/personal/c/geometry_dash/sgengine/libs/libfmod.dylib
-                        )
-add_library(libfmodstudio
-            SHARED
-            IMPORTED )
+#Add all of our source files and headers to this library.
+file(GLOB FILES "sgengine/**/*.?pp")
+add_library(sgengine SHARED ${FILES})
 
- # The Absolute Path of Naming Third Party Library
- set_target_properties( libfmodstudio
-                        PROPERTIES IMPORTED_LOCATION
-                        /Users/kevin.blanchard/git/personal/c/geometry_dash/sgengine/libs/libfmodstudio.dylib
-                        )
-add_library(sdl
-            SHARED
-            IMPORTED )
-
- # The Absolute Path of Naming Third Party Library
- set_target_properties( sdl
-                        PROPERTIES IMPORTED_LOCATION
-                        /Users/kevin.blanchard/git/personal/c/geometry_dash/sgengine/libs/SDL2.dylib
-                        )
+#Define libraries that we depend on, shared is dynamic linking.  Imported needs a specific location.
+set(libnames libfmod libfmodstudio SDL2)
+foreach(library ${libnames})
+        add_library(${library} SHARED IMPORTED)
+endforeach()
 
 
+#Add absolute paths to link to for development.
+foreach(library ${libnames})
+        set_target_properties( ${library}
+                                PROPERTIES IMPORTED_LOCATION
+                                /Users/kevin.blanchard/git/personal/c/geometry_dash/sgengine/libs/${library}.dylib
+                                )
+endforeach()
+
+#Add relative paths to link to for distribution.
+foreach(library ${libnames})
+        set_target_properties(${library} PROPERTIES LINK_FLAGS "-Wl,-rpath,./libs")
+endforeach()
+
+#Include directories for the sgengine.
 target_include_directories(sgengine 
-PUBLIC 
-"/Library/Frameworks/SDL2.framework/Headers" 
+PUBLIC
 "/Library/Frameworks/FMOD Programmers API/api/studio/inc/"
 "/Library/Frameworks/FMOD Programmers API/api/core/inc/"
-"sgengine/"
+"${CMAKE_CURRENT_SOURCE_DIR}/"
 )
+#Set c++20 standard for this.
 set_property(TARGET sgengine PROPERTY CXX_STANDARD 20)
-target_link_libraries(sgengine
-PUBLIC
-libfmod
-libfmodstudio
-sdl
-)
+
+#Actually create the links.
+target_link_libraries(sgengine PUBLIC ${libnames})
+
+# Copy files in the build folder so that we can have quick iterations and testing / building / distribution WOW DEVOPS
 add_custom_command(
         TARGET sgengine POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy

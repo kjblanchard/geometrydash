@@ -10,13 +10,14 @@ namespace SG
 
 	Graphics::Graphics()
 		: _screenSize(640, 480),
-		  _windowSurface(nullptr),
+		//   _windowSurface(nullptr),
 		  _renderer(nullptr)
 	{
 	}
 
 	bool Graphics::Startup()
 	{
+
 		if (!CreateGameWindow())
 			return false;
 		if (!InitializeSdlImg())
@@ -42,6 +43,9 @@ namespace SG
 		{
 			SDL_RenderDrawRect(_renderer, debugBox);
 		}
+		SDL_Rect rect;	
+		rect.h = rect.w = 16;
+		SDL_RenderDrawRect(_renderer, &rect);
 		SDL_RenderPresent(_renderer);
 	}
 
@@ -71,12 +75,12 @@ namespace SG
 			SG::DebugHandler::PrintErrorMessage(ErrorCodes::WindowError);
 			return false;
 		}
-		_windowSurface = SDL_GetWindowSurface(_gameWindow);
-		if (!_windowSurface)
-		{
-			DebugHandler::PrintErrorMessage(ErrorCodes::SDLError);
-			return false;
-		}
+		// _windowSurface = SDL_GetWindowSurface(_gameWindow);
+		// if (!_windowSurface)
+		// {
+		// 	DebugHandler::PrintErrorMessage(ErrorCodes::SDLError);
+		// 	return false;
+		// }
 		return true;
 	}
 
@@ -93,8 +97,8 @@ namespace SG
 
 	bool Graphics::CreateRenderer()
 	{
-		// _renderer = SDL_CreateRenderer(_gameWindow, -1, SDL_RENDERER_ACCELERATED);
-		_renderer = SDL_GetRenderer(_gameWindow);
+		_renderer = SDL_CreateRenderer(_gameWindow, -1, SDL_RENDERER_ACCELERATED);
+		// _renderer = SDL_GetRenderer(_gameWindow);
 		if (!_renderer)
 		{
 			DebugHandler::PrintErrorMessage(ErrorCodes::SDLError);

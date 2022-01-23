@@ -60,6 +60,7 @@ namespace SG
 
 		inline static std::map<SpriteSheetEnum, Spritesheet*> _spriteSheetMap =
 		{
+		{SpriteSheetEnum::Default, new Spritesheet("castle-tileset.png")},
 		{SpriteSheetEnum::Link,new Spritesheet("hero.png")},
 		{SpriteSheetEnum::TileSet, new Spritesheet("tileset.png")},
 		{SpriteSheetEnum::LinkWalking,new Spritesheet("Link_Movement.png")},

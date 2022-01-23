@@ -1,4 +1,7 @@
-add_executable(main geometrydashworld.hpp geometrydashworld.cpp)
+#Add all of our source files and headers to this library.
+file(GLOB FILES "${CMAKE_SOURCE_DIR}/**/*.?pp")
+message(STATUS ${FILES})
+add_executable(main ${FILES})
 set_property(TARGET main PROPERTY CXX_STANDARD 20)
 target_include_directories(main 
         PUBLIC

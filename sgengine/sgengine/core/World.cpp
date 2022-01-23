@@ -71,13 +71,14 @@ namespace SG
 					DebugHandler::PrintErrorMessage(ErrorCodes::GameSlowdown, _gameClock->DeltaTime());
 				while (_gameClock->ShouldUpdate())
 				{
+					HandleEvents();
 					Update(_gameClock->MsPerFrame());
 					_gameClock->UpdateClockTimer();
 					_sound->update();
 				}
 				Draw();
 			}
-			SDL_Delay(1);
+			SDL_Delay(5);
 		}
 	}
 

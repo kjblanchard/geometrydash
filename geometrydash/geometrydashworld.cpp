@@ -26,6 +26,7 @@ void geometrydashworld::Startup()
 
 void geometrydashworld::Update(const double& deltaTime)
 {
+	_player->Update(deltaTime);
 }
 
 void geometrydashworld::Draw()

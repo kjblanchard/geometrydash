@@ -15,7 +15,7 @@ namespace SG
 	class Sound;
 	class GameObjectList;
 	class GameObject;
-	// class Input;
+	class Input;
 	class Graphics;
 	class GameClock;
 
@@ -38,10 +38,24 @@ namespace SG
 		 * \brief Main Game loop, this is called by the main function when the program is started.
 		 */
 		void Loop();
-		static World *GetGame() { return _instance; }
+		/**
+		 * @brief Gets the current instance of the world.
+		 * 
+		 * @return World* To the world
+		 */
+		static World *GetWorld() { return _instance; }
+		/**
+		 * @brief Get the Graphics object
+		 * 
+		 * @return Graphics* 
+		 */
 		static Graphics *GetGraphics() { return _graphics.get(); }
 
 		static FMOD::Studio::System *_sound;
+		/**
+		 * @brief The master switch for showing collision debug boxes, you can flip this to override any of the other debug settings.
+		 * 
+		 */
 		inline static bool _isCollisionDebug = true;
 
 	protected:
@@ -54,7 +68,7 @@ namespace SG
 		bool shouldQuit{};
 		static std::unique_ptr<Graphics> _graphics;
 		static World *_instance;
-		// std::unique_ptr<Input> _input;
+		std::unique_ptr<Input> _input;
 
 	private:
 		/**
@@ -65,7 +79,7 @@ namespace SG
 		/**
 		 * \brief Handles the Input for everything that needs their input handled.
 		 */
-		// void HandleInput();
+		void HandleInput();
 
 		virtual void Startup() = 0;
 
@@ -81,6 +95,8 @@ namespace SG
 		 * \brief This will run the draw function for all game objects.
 		 */
 		virtual void Draw() = 0;
+
+
 	};
 
 };

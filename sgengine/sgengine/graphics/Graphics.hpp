@@ -70,7 +70,8 @@ namespace SG
 		{SpriteSheetEnum::LinkWalkingHit, new Spritesheet("linkMovingHit.png")}
 		};
 
-		Point _screenSize;
+		Point _displayResolution;
+		Point _worldResolution;
 		SDL_Window* _gameWindow{};
 		SDL_Surface* _windowSurface;
 		SDL_Renderer* _renderer;

@@ -31,27 +31,29 @@ namespace SG
 		 * \brief Returns if the time since last update is greater than the ms per frame
 		 * \return If the game should perform a game loop update
 		 */
-		bool ShouldUpdate() const { return _timeSinceLastUpdate >= _msPerFrame; }
+		inline bool ShouldUpdate() const { return _timeSinceLastUpdate >= _msPerFrame; }
+
+		inline int CalculateSleepTime() const {return _msPerFrame - _timeSinceLastUpdate;}
 		/**
 		 * \brief Checks to see if the game is getting a steady frame rate or not
 		 * \return Value is true if the Update time since last frame is the ms frame time * 1.5
 		 */
-		bool GameIsLagging() const { return _timeSinceLastUpdate >= (_msPerFrame * 1.5); }
+		inline bool GameIsLagging() const { return _timeSinceLastUpdate >= (_msPerFrame * 1.5); }
 		/**
 		 * \brief Returns a reference to the games configuration for its ms per frame
 		 * \return The games ms per frame
 		 */
-		const double& MsPerFrame() const { return _msPerFrame; }
+		inline const double& MsPerFrame() const { return _msPerFrame; }
 		/**
 		 * \brief Returns the amount of time since the last update was ran
 		 * \return The amount of time since the last update was ran
 		 */
-		const double& DeltaTime() const { return _timeSinceLastUpdate; }
+		inline const double& DeltaTime() const { return _timeSinceLastUpdate; }
 		/**
 		 * \brief Returns the total gametime including pause time
 		 * \return Total time since the game has started
 		 */
-		Time TotalTime() const { return  _clock.GetElapsedTime(); }
+		inline Time TotalTime() const { return  _clock.GetElapsedTime(); }
 
 	private:
 		double _msPerFrame;

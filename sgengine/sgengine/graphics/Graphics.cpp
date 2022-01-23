@@ -9,8 +9,9 @@ namespace SG
 {
 
 	Graphics::Graphics()
-		: _screenSize(640, 480),
-		//   _windowSurface(nullptr),
+		: _displayResolution(1920, 1080),
+		  _worldResolution(512, 288),
+		  //   _windowSurface(nullptr),
 		  _renderer(nullptr)
 	{
 	}
@@ -37,15 +38,10 @@ namespace SG
 			else
 				SDL_RenderCopy(_renderer, sprite->SpriteSheet->SpriteSheetTexture, &sprite->LocationAndSizeInSpriteSheet, &sprite->LocationAndSizeOnRenderer);
 		}
-		SDL_SetRenderDrawColor(_renderer, 255, 0, 0, 255);
-
 		for (auto debugBox : spriteBatch.DebugBoxes())
 		{
 			SDL_RenderDrawRect(_renderer, debugBox);
 		}
-		SDL_Rect rect;	
-		rect.h = rect.w = 16;
-		SDL_RenderDrawRect(_renderer, &rect);
 		SDL_RenderPresent(_renderer);
 	}
 
@@ -69,18 +65,12 @@ namespace SG
 
 	bool Graphics::CreateGameWindow()
 	{
-		_gameWindow = SDL_CreateWindow("Zelda - KJB", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, _screenSize.X, _screenSize.Y, SDL_WINDOW_SHOWN);
+		_gameWindow = SDL_CreateWindow("Geometry Dash!", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, _displayResolution.X, _displayResolution.Y, SDL_WINDOW_SHOWN);
 		if (!_gameWindow)
 		{
 			SG::DebugHandler::PrintErrorMessage(ErrorCodes::WindowError);
 			return false;
 		}
-		// _windowSurface = SDL_GetWindowSurface(_gameWindow);
-		// if (!_windowSurface)
-		// {
-		// 	DebugHandler::PrintErrorMessage(ErrorCodes::SDLError);
-		// 	return false;
-		// }
 		return true;
 	}
 
@@ -98,13 +88,13 @@ namespace SG
 	bool Graphics::CreateRenderer()
 	{
 		_renderer = SDL_CreateRenderer(_gameWindow, -1, SDL_RENDERER_ACCELERATED);
-		// _renderer = SDL_GetRenderer(_gameWindow);
 		if (!_renderer)
 		{
 			DebugHandler::PrintErrorMessage(ErrorCodes::SDLError);
 			return false;
 		}
-		SDL_SetRenderDrawColor(_renderer, 0x00, 0x00, 0x00, 0x00);
+		SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
+		SDL_RenderSetLogicalSize(_renderer, _worldResolution.X, _worldResolution.Y);
 		return true;
 	}
 

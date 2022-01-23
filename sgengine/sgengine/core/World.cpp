@@ -4,15 +4,13 @@
 #include <sgengine/core/GameClock.hpp>
 #include <sgengine/graphics/Graphics.hpp>
 #include <sgengine/graphics/SpriteBatch.hpp>
-#include "World.hpp"
-
-// #include "core/GameObjectList.h"
-// #include "input/Input.h"
+#include <sgengine/core/World.hpp>
+#include <sgengine/input/Input.hpp>
 
 namespace SG
 {
 
-	//statics
+	//Initialize the static class variables.
 	std::unique_ptr<Graphics> World::_graphics = nullptr;
 	World *World::_instance = nullptr;
 	FMOD::Studio::System *World::_sound = nullptr;
@@ -39,7 +37,7 @@ namespace SG
 			return false;
 		if (!InitializeFmod())
 			return false;
-		// _input->Startup();
+		_input->Startup();
 		return true;
 	}
 
@@ -71,7 +69,8 @@ namespace SG
 					DebugHandler::PrintErrorMessage(ErrorCodes::GameSlowdown, _gameClock->DeltaTime());
 				while (_gameClock->ShouldUpdate())
 				{
-					HandleEvents();
+					HandleInput();
+					// HandleEvents();
 					Update(_gameClock->MsPerFrame());
 					_gameClock->UpdateClockTimer();
 					_sound->update();
@@ -79,6 +78,12 @@ namespace SG
 				Draw();
 			}
 			SDL_Delay(5);
+			// else{
+			// 	auto sleeptime = _gameClock->CalculateSleepTime();
+			// 	std::cout << "The sleep time is: " << sleeptime << std::endl;
+			// 	SDL_Delay(sleeptime);
+
+			// }
 		}
 	}
 
@@ -92,19 +97,20 @@ namespace SG
 				shouldQuit = true;
 				return false;
 			}
-			// _input->HandleJoystickEvent(event);
+			_input->HandleJoystickEvent(event);
 		}
 		return true;
 	}
 
-	// void World::HandleInput()
-	// {
-	// 	Input::UpdatePreviousJoystickState();
-	// 	HandleEvents();
-	// 	Input::UpdateKeyboardStates();
-	// }
+	void World::HandleInput()
+	{
+		Input::UpdatePreviousJoystickState();
+		HandleEvents();
+		Input::UpdateKeyboardStates();
+	}
 
 	void World::Draw()
 	{
 	}
+
 }
